@@ -24,7 +24,7 @@ export default async function Home() {
               </div>
             </header>
           </div>
-          <AnimatedCounter />
+          {/* <AnimatedCounter /> */}
         </section>
         <ShowcaseSection />
       </main>
