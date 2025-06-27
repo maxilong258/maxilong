@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { Button } from "../ui/button";
-import HeroExperience from "../models/hero_models/HeroExperience";
+import { Button } from "./ui/button";
+import HeroExperience from "./models/hero_models/HeroExperience";
 
 export default async function Hero() {
   const t = await getTranslations("HomePage");
