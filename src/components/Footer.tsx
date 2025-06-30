@@ -1,43 +1,46 @@
-const socialImgs = [
-  {
-    name: "insta",
-    imgPath: "/images/insta.png",
-  },
-  {
-    name: "fb",
-    imgPath: "/images/fb.png",
-  },
-  {
-    name: "x",
-    imgPath: "/images/x.png",
-  },
-  {
-    name: "linkedin",
-    imgPath: "/images/linkedin.png",
-  },
-];
+import { siteConfig } from "@/config/site";
+import { LanguageSwitcher } from "./lang/language-switcher";
+import { ThemeToggle } from "./theme/theme-toggle";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import { GithubIcon, TwitterIcon } from "lucide-react";
+
+const iconMap = {
+  github: GithubIcon,
+  twitter: TwitterIcon,
+} as const;
 
 const Footer = () => {
   return (
     <footer className="my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0 w-full">
         <div className="flex flex-col justify-center">
-          <p className="text-center md:text-start cursor-pointer">Terms & Conditions</p>
+          <p className="text-center md:text-start">
+            © {new Date().getFullYear()} maxilong
+          </p>
         </div>
         <div className="flex items-center justify-center gap-5">
-          {socialImgs.map((socialImg, index) => (
-            <div key={index} className="border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50">
-              <img src={socialImg.imgPath} alt="social icon" />
-            </div>
-          ))}
+          {siteConfig.socialLinks.map((item) => {
+            const IconComponent = iconMap[item.icon as keyof typeof iconMap];
+            return (
+              <Button
+                key={item.link}
+                variant="ghost"
+                size="icon"
+                asChild
+                className="rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 p-6
+                      hover:text-gray-900 dark:bg-[#1e1f21] dark:text-gray-400 dark:hover:text-gray-200"
+              >
+                <Link key={item.link} href={item.link} target="_blank">
+                  <IconComponent className="!w-6 !h-6" />
+                </Link>
+              </Button>
+            );
+          })}
         </div>
-
-        
-
-        <div className="flex flex-col justify-center">
-          <p className="text-center md:text-end">
-            © {new Date().getFullYear()} Adrian Hajdin. All rights reserved.
-          </p>
+        <div className="flex items-center ml-auto gap-4">
+          <ThemeToggle />
+          <LanguageSwitcher />
         </div>
       </div>
     </footer>
