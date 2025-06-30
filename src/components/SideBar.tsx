@@ -4,8 +4,6 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { ThemeToggle } from "./theme/theme-toggle";
-import { LanguageSwitcher } from "./lang/language-switcher";
 
 const navLinks = [
   { name: "Home", link: "#hero", icon: "ph:house-duotone" },
@@ -38,8 +36,6 @@ const SideBar = () => {
             </TooltipContent>
           </Tooltip>
         ))}
-        <ThemeToggle />
-        <LanguageSwitcher />
       </aside>
     </div>
   );

@@ -1,13 +1,14 @@
 import { getTranslations } from "next-intl/server";
 import { Button } from "./ui/button";
 import HeroExperience from "./models/hero_models/HeroExperience";
+import { ArrowRight } from "lucide-react";
 
 export default async function Hero() {
   const t = await getTranslations("HomePage");
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="relative z-1 xl:mt-10 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center">
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
+        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 ml-8">
           <div className="flex flex-col gap-7">
             <div className="flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none">
               <h1>{t("title")}</h1>
@@ -20,8 +21,9 @@ export default async function Hero() {
               code.
             </p>
 
-            <Button className="md:w-80 md:h-16 w-60 h-12" id="counter">
+            <Button className="md:w-80 md:h-16 w-60 h-12 text-2xl" id="counter">
               See My Work
+              <ArrowRight className="!w-6 !h-6 ml-2" />
             </Button>
           </div>
         </header>

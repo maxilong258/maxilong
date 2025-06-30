@@ -5,14 +5,20 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { EffectComposer, SelectiveBloom } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
+import { useTheme } from "next-themes";
 
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/optimized-room.glb");
   const screensRef = useRef();
   const matcapTexture = useTexture("/images/textures/mat1.png");
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
+  // 根据主题调整材质
   const curtainMaterial = new THREE.MeshPhongMaterial({
-    color: "#d90429",
+    color: isDark ? "#d90429" : "#ff6b6b",
+    transparent: true,
+    opacity: isDark ? 1 : 0.9,
   });
 
   const bodyMaterial = new THREE.MeshPhongMaterial({
@@ -20,23 +26,29 @@ export function Room(props) {
   });
 
   const tableMaterial = new THREE.MeshPhongMaterial({
-    color: "#582f0e",
+    color: isDark ? "#582f0e" : "#8b4513",
+    shininess: isDark ? 30 : 50,
   });
 
   const radiatorMaterial = new THREE.MeshPhongMaterial({
-    color: "#fff",
+    color: isDark ? "#fff" : "#f8f9fa",
+    shininess: isDark ? 50 : 80,
   });
 
   const compMaterial = new THREE.MeshStandardMaterial({
-    color: "#fff",
+    color: isDark ? "#fff" : "#ffffff",
+    metalness: isDark ? 0.1 : 0.2,
+    roughness: isDark ? 0.8 : 0.6,
   });
 
   const pillowMaterial = new THREE.MeshPhongMaterial({
-    color: "#8338ec",
+    color: isDark ? "#8338ec" : "#4a90e2",
+    shininess: isDark ? 20 : 30,
   });
 
   const chairMaterial = new THREE.MeshPhongMaterial({
-    color: "#000",
+    color: isDark ? "#000" : "#2c3e50",
+    shininess: isDark ? 10 : 40,
   });
 
   return (
@@ -44,10 +56,10 @@ export function Room(props) {
       <EffectComposer>
         <SelectiveBloom
           selection={screensRef}
-          intensity={0.15} // Strength of the bloom
-          luminanceThreshold={0.2} // Minimum luminance needed
-          luminanceSmoothing={0.9} // Smooth transition
-          blendFunction={BlendFunction.ADD} // How it blends
+          intensity={isDark ? 0.15 : 0.1} // 白天降低发光强度
+          luminanceThreshold={isDark ? 0.2 : 0.3} // 白天提高阈值
+          luminanceSmoothing={0.9}
+          blendFunction={BlendFunction.ADD}
         />
       </EffectComposer>
       <mesh

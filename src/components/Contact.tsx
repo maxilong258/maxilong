@@ -45,7 +45,7 @@ const Contact = () => {
                 <div>
                   <label className="block text-white-50 mb-2" htmlFor="name">Your name</label>
                   <input
-                    className="w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md"
+                    className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     type="text"
                     id="name"
                     name="name"
@@ -57,9 +57,9 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email">Your Email</label>
+                  <label className="block text-white-50 mb-2" htmlFor="email">Your Email</label>
                   <input
-                    className="w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md"
+                    className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     type="email"
                     id="email"
                     name="email"
@@ -71,10 +71,9 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message">Your Message</label>
+                  <label className="block text-white-50 mb-2" htmlFor="message">Your Message</label>
                   <textarea
-
-                    className="w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md"
+                    className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     id="message"
                     name="message"
                     value={form.message}
