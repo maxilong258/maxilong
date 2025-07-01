@@ -8,11 +8,10 @@ import {
 const navLinks = [
   { name: "Home", link: "#hero", icon: "ph:house-duotone" },
   { name: "Work", link: "#work", icon: "ph:briefcase-duotone" },
-  { name: "Experience", link: "#experience", icon: "ph:medal-duotone" },
   { name: "Skills", link: "#skills", icon: "ph:code-duotone" },
   {
-    name: "Testimonials",
-    link: "#testimonials",
+    name: "Contact",
+    link: "#contact",
     icon: "ph:chat-circle-text-duotone",
   },
 ];

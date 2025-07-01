@@ -68,7 +68,7 @@ const ShowcaseSection = () => {
       link: "",
     },
     nextStack: {
-      name: "Next Stack",
+      name: "NextStack",
       description: "我的博客，基于Next.js",
       image: "/images/next-stack.png",
       link: "https://next-stack-ten.vercel.app/",

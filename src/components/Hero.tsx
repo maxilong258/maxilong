@@ -9,7 +9,7 @@ export default async function Hero() {
     <section id="hero" className="relative overflow-hidden">
       <div className="relative z-1 xl:mt-10 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center">
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 ml-16">
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-7 max-w-2xl">
             <div className="flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none">
               <h1 className="mb-4">{t("title")}</h1>
               <p className="md:text-xl relative z-10 pointer-events-none mb-8">
@@ -30,7 +30,7 @@ export default async function Hero() {
         </header>
 
         <figure>
-          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0">
+          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0" style={{zIndex: -1}}>
             <HeroExperience />
           </div>
         </figure>

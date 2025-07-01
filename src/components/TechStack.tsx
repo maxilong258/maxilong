@@ -8,23 +8,39 @@ import TitleHeader from "../components/TitleHeader";
 const techStackImgs = [
   {
     name: "React Developer",
-    imgPath: "/images/logos/react.png",
+    imgPath: "/images/logos/React.png",
   },
   {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
+    name: "Vue Developer",
+    imgPath: "/images/logos/Vue.png",
+  },
+  {
+    name: "Flutter Developer",
+    imgPath: "/images/logos/Flutter.png",
   },
   {
     name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
+    imgPath: "/images/logos/Nestjs.png",
+  },
+  {
+    name: "Next Developer",
+    imgPath: "/images/logos/nextjs.png",
+  },
+  {
+    name: "Uniapp Developer",
+    imgPath: "/images/logos/uni-app.png",
   },
   {
     name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
+    imgPath: "/images/logos/Threejs.png",
+  },
+  {
+    name: "UI/UX Designer",
+    imgPath: "/images/logos/Ui-Ux.png",
   },
   {
     name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
+    imgPath: "/images/logos/git.png",
   },
 ];
 
@@ -75,7 +91,7 @@ const TechStack = () => {
               <div className="absolute left-0 bottom-[-100%] w-full h-full bg-gray-300 dark:bg-gray-900 group-hover:bottom-0 transition-all duration-700" />
               <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 group-hover:cursor-grab p-6">
                 <div className="flex justify-center items-center w-52 h-60 relative">
-                  <img src={techStackIcon.imgPath} alt={techStackIcon.name} className="max-w-full h-auto" />
+                  <img src={techStackIcon.imgPath} alt={techStackIcon.name} className="max-w-3/4 h-auto" />
                 </div>
                 <div className="w-full">
                   <p className="text-lg 2xl:text-2xl pb-5 xl:pb-0 font-semibold text-gray-900 dark:text-gray-100 text-center">{techStackIcon.name}</p>
