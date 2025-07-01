@@ -13,7 +13,7 @@ const HeroExperience = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   return (
     <Canvas 
-      camera={{ position: [0, 0, 15], fov: 40 }}
+      camera={{ position: [0, 2, 5], fov: 45 }}
       shadows
       gl={{ 
         antialias: true,

@@ -60,6 +60,7 @@ const TechStack = () => {
 
   return (
     <div id="skills" className="flex justify-center items-center px-5 md:px-10 md:mt-40 mt-20">
+
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="How I Can Contribute & My Key Skills"

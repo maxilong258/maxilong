@@ -1,35 +1,36 @@
 import { getTranslations } from "next-intl/server";
 import { Button } from "./ui/button";
 import HeroExperience from "./models/hero_models/HeroExperience";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export default async function Hero() {
   const t = await getTranslations("HomePage");
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="relative z-1 xl:mt-10 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center">
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 ml-8">
+        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 ml-16">
           <div className="flex flex-col gap-7">
             <div className="flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none">
-              <h1>{t("title")}</h1>
-              <h1>{t("about")}</h1>
-              <h1>that Deliver Results</h1>
+              <h1 className="mb-4">{t("title")}</h1>
+              <p className="md:text-xl relative z-10 pointer-events-none mb-8">
+                {t("about")}
+              </p>
             </div>
-
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I'm Adrian, a developer based in Croatia with a passion for
-              code.
-            </p>
-
-            <Button className="md:w-80 md:h-16 w-60 h-12 text-2xl" id="counter">
-              See My Work
-              <ArrowRight className="!w-6 !h-6 ml-2" />
-            </Button>
+            <a href="#work">
+              <Button
+                className="md:w-80 md:h-16 w-60 h-12 text-2xl bg-orange-400 hover:hover:bg-orange-500"
+                id="counter"
+                style={{zIndex: 1}}
+              >
+                See My Work
+                <ArrowDown className="!w-6 !h-6 ml-2" />
+              </Button>
+            </a>
           </div>
         </header>
 
         <figure>
-          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0">
+          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0">
             <HeroExperience />
           </div>
         </figure>

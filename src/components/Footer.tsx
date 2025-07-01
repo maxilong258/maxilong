@@ -5,12 +5,24 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { GithubIcon, TwitterIcon } from "lucide-react";
 
-const iconMap = {
-  github: GithubIcon,
-  twitter: TwitterIcon,
-} as const;
-
 const Footer = () => {
+
+  const socialLinks = [
+    {
+      icon: 'github',
+      link: 'https://github.com/maxilong258'
+    },
+    {
+      icon: 'twitter',
+      link: 'https://x.com/maxilong1234'
+    },
+  ]
+
+  const iconMap = {
+    github: GithubIcon,
+    twitter: TwitterIcon,
+  } as const;
+
   return (
     <footer className="my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0 w-full">
@@ -20,7 +32,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex items-center justify-center gap-5">
-          {siteConfig.socialLinks.map((item) => {
+          {socialLinks.map((item) => {
             const IconComponent = iconMap[item.icon as keyof typeof iconMap];
             return (
               <Button
