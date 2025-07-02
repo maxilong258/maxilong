@@ -1,4 +1,3 @@
-import { siteConfig } from "@/config/site";
 import { LanguageSwitcher } from "./lang/language-switcher";
 import { ThemeToggle } from "./theme/theme-toggle";
 import { Button } from "./ui/button";
@@ -50,7 +49,7 @@ const Footer = () => {
             );
           })}
         </div>
-        <div className="flex items-center ml-auto gap-4">
+        <div className="flex items-center gap-4 justify-center md:justify-end">
           <ThemeToggle />
           <LanguageSwitcher />
         </div>
