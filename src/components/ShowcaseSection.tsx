@@ -56,7 +56,7 @@ const ShowcaseSection = () => {
     },
     atmosphere: {
       name: "My Ambience",
-      description: "一个基于Nextjs的音乐氛围创建网站。",
+      description: "一个基于Next.js的音乐氛围创建网站。",
       image: "/images/atmosphere.png",
       link: "https://myambience.vercel.app/",
     },
