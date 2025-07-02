@@ -8,7 +8,7 @@ export default async function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="relative z-1 xl:mt-10 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center">
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 ml-16">
+        <header className="flex flex-col justify-center md:max-w-2xl w-screen md:px-20 px-5 ml-10 absolute left-0">
           <div className="flex flex-col gap-7 max-w-2xl">
             <div className="flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none">
               <h1 className="mb-4">{t("title")}</h1>

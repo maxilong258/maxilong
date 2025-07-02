@@ -84,7 +84,7 @@ const HeroLights = () => {
       />
 
       {/* 房间内部的柔和补光 */}
-      <pointLight position={[0, 3, 0]} intensity={0.1} color="#ffffff" />
+      <pointLight position={[0, 3, 0]} intensity={5} color="#ffffff" />
       
       {/* 桌面工作区域的重点照明 */}
       <spotLight

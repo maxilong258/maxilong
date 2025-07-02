@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useRef } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
@@ -63,12 +63,23 @@ export function Room(props) {
         />
       </EffectComposer>
       <mesh
+        receiveShadow
         geometry={nodes._________6_blinn1_0.geometry}
         material={curtainMaterial}
       />
-      <mesh geometry={nodes.body1_blinn1_0.geometry} material={bodyMaterial} />
-      <mesh geometry={nodes.cabin_blinn1_0.geometry} material={tableMaterial} />
       <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.body1_blinn1_0.geometry}
+        material={bodyMaterial}
+      />
+      <mesh
+        castShadow
+        geometry={nodes.cabin_blinn1_0.geometry}
+        material={tableMaterial}
+      />
+      <mesh
+        castShadow
         geometry={nodes.chair_body_blinn1_0.geometry}
         material={chairMaterial}
       />
@@ -83,6 +94,7 @@ export function Room(props) {
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.keyboard_blinn1_0.geometry}
         material={materials.blinn1}
       />
@@ -95,18 +107,22 @@ export function Room(props) {
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.lamp_white_blinn1_0.geometry}
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.miuse_blinn1_0.geometry}
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.monitor2_blinn1_0.geometry}
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.monitor3_blinn1_0.geometry}
         material={materials.blinn1}
       />
@@ -146,8 +162,14 @@ export function Room(props) {
         geometry={nodes.stylus_blinn1_0.geometry}
         material={materials.blinn1}
       />
-      <mesh geometry={nodes.table_blinn1_0.geometry} material={tableMaterial} />
       <mesh
+        receiveShadow
+        castShadow
+        geometry={nodes.table_blinn1_0.geometry}
+        material={tableMaterial}
+      />
+      <mesh
+        castShadow
         geometry={nodes.tablet_blinn1_0.geometry}
         material={materials.blinn1}
       />
@@ -160,6 +182,7 @@ export function Room(props) {
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.vacuum1_blinn1_0.geometry}
         material={materials.blinn1}
       />
@@ -168,6 +191,7 @@ export function Room(props) {
         material={materials.blinn1}
       />
       <mesh
+        castShadow
         geometry={nodes.vires_blinn1_0.geometry}
         material={materials.blinn1}
       />
@@ -176,11 +200,10 @@ export function Room(props) {
         material={materials.blinn1}
       />
       <mesh
-        geometry={nodes.window4_phong1_0.geometry}
+        // geometry={nodes.window4_phong1_0.geometry}
         material={materials.phong1}
       />
     </group>
   );
 }
 useGLTF.preload("/models/optimized-room.glb");
-

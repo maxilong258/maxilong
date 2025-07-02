@@ -1,10 +1,12 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 
 import TitleHeader from "@/components/TitleHeader";
 import ContactExperience from "@/components/models/contact/ContactExperience";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -14,6 +16,8 @@ const Contact = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -22,6 +26,26 @@ const Contact = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log("Form submitted:", form); // Optional: show toast
+    try {
+      setLoading(true);
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current!,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+      toast.success("Message sent successfully");
+    } catch (error) {
+      console.error("EMAILJS ERROR", error);
+      toast.error("Message sending failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +67,9 @@ const Contact = () => {
                 className="w-full flex flex-col gap-7"
               >
                 <div>
-                  <label className="block text-white-50 mb-2" htmlFor="name">Your name</label>
+                  <label className="block text-white-50 mb-2" htmlFor="name">
+                    Your name
+                  </label>
                   <input
                     className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     type="text"
@@ -57,7 +83,9 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-white-50 mb-2" htmlFor="email">Your Email</label>
+                  <label className="block text-white-50 mb-2" htmlFor="email">
+                    Your Email
+                  </label>
                   <input
                     className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     type="email"
@@ -71,7 +99,9 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-white-50 mb-2" htmlFor="message">Your Message</label>
+                  <label className="block text-white-50 mb-2" htmlFor="message">
+                    Your Message
+                  </label>
                   <textarea
                     className="w-full px-4 py-4 md:text-base text-sm rounded-md border-1 border-black-50"
                     id="message"
@@ -84,8 +114,8 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit">
-                  Send Message
+                <Button type="submit" disabled={loading} className="text-md bg-orange-400 hover:hover:bg-orange-500">
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
