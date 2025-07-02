@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "./TitleHeader";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -134,7 +135,7 @@ const ShowcaseSection = () => {
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
             <div className="xl:h-[70vh] md:h-[50vh] h-96 relative bg-[#2073FF] rounded-xl">
-              <img
+              <Image
                 className="w-full h-full object-contain  absolute inset-0 p-7"
                 src={projects.oceanbase.image}
                 alt="Oceanbase Console"
