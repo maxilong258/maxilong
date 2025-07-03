@@ -30,7 +30,7 @@ export default async function Hero() {
         </header>
 
         <figure>
-          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0" style={{zIndex: -1}}>
+          <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0 hover:cursor-grab" style={{zIndex: -1}}>
             <HeroExperience />
           </div>
         </figure>

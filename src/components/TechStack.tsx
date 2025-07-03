@@ -90,7 +90,7 @@ const TechStack = () => {
               className="border border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-[#1e1f21] tech-card overflow-hidden group rounded-lg hover:shadow-lg transition-all duration-300"
             >
               <div className="absolute left-0 bottom-[-100%] w-full h-full bg-gray-300 dark:bg-gray-900 group-hover:bottom-0 transition-all duration-700" />
-              <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 group-hover:cursor-grab p-6">
+              <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 p-6">
                 <div className="flex justify-center items-center w-52 h-60 relative">
                   <Image 
                     fill
