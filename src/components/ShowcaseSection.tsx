@@ -136,7 +136,8 @@ const ShowcaseSection = () => {
           >
             <div className="xl:h-[70vh] md:h-[50vh] h-96 relative bg-[#2073FF] rounded-xl">
               <Image
-                className="w-full h-full object-contain  absolute inset-0 p-7"
+                fill
+                className="object-contain p-7"
                 src={projects.oceanbase.image}
                 alt="Oceanbase Console"
               />
@@ -160,8 +161,9 @@ const ShowcaseSection = () => {
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={unicomRef}>
               <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#FFEFDB]">
-                <img
-                  className="w-full h-full object-cover rounded-xl"
+                <Image
+                  fill
+                  className="object-cover rounded-xl"
                   src={projects.unicom.image}
                   alt="China Unicom App"
                 />
@@ -182,8 +184,9 @@ const ShowcaseSection = () => {
 
             <div className="project" ref={huigeRef}>
               <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
-                <img
-                  className="w-full h-full object-contain rounded-xl"
+                <Image
+                  fill
+                  className="object-contain rounded-xl"
                   src={projects.huige.image}
                   alt="Huige Health"
                 />
@@ -208,8 +211,9 @@ const ShowcaseSection = () => {
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={tubeLearningRef}>
               <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl py-0 bg-[#E9C55D]">
-                <img
-                  className="w-full h-full object-contain rounded-xl"
+                <Image
+                  fill
+                  className="object-contain rounded-xl"
                   src={projects.tubeLearning.image}
                   alt="Tube Learning"
                 />
@@ -230,8 +234,9 @@ const ShowcaseSection = () => {
 
             <div className="project" ref={lifeExpenseRef}>
               <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-4 2xl:px-8 py-0 bg-[#212434]">
-                <img
-                  className="w-full h-full object-contain rounded-xl"
+                <Image
+                  fill
+                  className="object-contain rounded-xl p-4"
                   src={projects.lifeExpense.image}
                   alt="Life Expense"
                 />
@@ -256,8 +261,9 @@ const ShowcaseSection = () => {
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
             <div className="xl:h-[70vh] md:h-[50vh] h-96 relative">
-              <img
-                className="w-full h-full object-cover rounded-xl absolute inset-0"
+              <Image
+                fill
+                className="object-cover rounded-xl"
                 src={projects.atmosphere.image}
                 alt="Atmosphere"
               />
@@ -285,8 +291,9 @@ const ShowcaseSection = () => {
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
             <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
-              <img
-                className="w-full h-full object-contain rounded-xl absolute inset-0 p-7"
+              <Image
+                fill
+                className="object-contain rounded-xl p-7"
                 src={projects.ionMsWeb.image}
                 alt="ion-ms-web"
               />
@@ -310,8 +317,9 @@ const ShowcaseSection = () => {
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={nextStackRef}>
               <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#E1E4E8]">
-                <img
-                  className="w-full h-full object-contain rounded-xl p-5"
+                <Image
+                  fill
+                  className="object-contain rounded-xl p-5"
                   src={projects.nextStack.image}
                   alt="next-stack"
                 />

@@ -2,13 +2,14 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Image from "next/image";
 
 import TitleHeader from "../components/TitleHeader";
 
 const techStackImgs = [
   {
     name: "React Developer",
-    imgPath: "/images/logos/React.png",
+    imgPath: "/images/logos/react.png",
   },
   {
     name: "Vue Developer",
@@ -91,7 +92,12 @@ const TechStack = () => {
               <div className="absolute left-0 bottom-[-100%] w-full h-full bg-gray-300 dark:bg-gray-900 group-hover:bottom-0 transition-all duration-700" />
               <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 group-hover:cursor-grab p-6">
                 <div className="flex justify-center items-center w-52 h-60 relative">
-                  <img src={techStackIcon.imgPath} alt={techStackIcon.name} className="max-w-3/4 h-auto" />
+                  <Image 
+                    fill
+                    src={techStackIcon.imgPath} 
+                    alt={techStackIcon.name} 
+                    className="object-contain" 
+                  />
                 </div>
                 <div className="w-full">
                   <p className="text-lg 2xl:text-2xl pb-5 xl:pb-0 font-semibold text-gray-900 dark:text-gray-100 text-center">{techStackIcon.name}</p>

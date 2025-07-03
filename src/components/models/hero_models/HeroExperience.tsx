@@ -3,7 +3,6 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useMediaQuery } from "react-responsive";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { Room } from "./Room";
 import HeroLights from './HeroLights';
 
