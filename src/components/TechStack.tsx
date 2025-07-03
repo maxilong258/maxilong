@@ -32,7 +32,7 @@ const techStackImgs = [
   },
   {
     name: "Interactive Developer",
-    imgPath: "/images/logos/Threejs.png",
+    imgPath: "/images/logos/threejs.png",
   },
   {
     name: "UI/UX Designer",
