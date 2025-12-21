@@ -134,45 +134,47 @@ const ShowcaseSection = () => {
             ref={oceanbaseRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            <div className="xl:h-[70vh] md:h-[50vh] h-96 relative bg-[#2073FF] rounded-xl">
-              <Image
-                fill
-                className="object-contain p-7"
-                src={projects.oceanbase.image}
-                alt="Oceanbase Console"
-              />
-            </div>
-            <div className="space-y-5 mt-5">
-              <a
-                href={projects.oceanbase.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <a
+              href={projects.oceanbase.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col h-full"
+            >
+              <div className="xl:h-[70vh] md:h-[50vh] h-96 relative bg-[#2073FF] rounded-xl">
+                <Image
+                  fill
+                  className="object-contain p-7"
+                  src={projects.oceanbase.image}
+                  alt="Oceanbase Console"
+                />
+              </div>
+              <div className="space-y-5 mt-5">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
                   {projects.oceanbase.name}
                 </h2>
                 <p className="text-white-50 md:text-xl">
                   {projects.oceanbase.description}
                 </p>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
 
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={unicomRef}>
-              <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#FFEFDB]">
-                <Image
-                  fill
-                  className="object-cover rounded-xl"
-                  src={projects.unicom.image}
-                  alt="China Unicom App"
-                />
-              </div>
               <a
                 href={projects.unicom.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex flex-col h-full"
               >
+                <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#FFEFDB]">
+                  <Image
+                    fill
+                    className="object-cover rounded-xl"
+                    src={projects.unicom.image}
+                    alt="China Unicom App"
+                  />
+                </div>
                 <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
                   {projects.unicom.name}
                 </h2>
@@ -183,26 +185,46 @@ const ShowcaseSection = () => {
             </div>
 
             <div className="project" ref={huigeRef}>
-              <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
-                <Image
-                  fill
-                  className="object-contain rounded-xl"
-                  src={projects.huige.image}
-                  alt="Huige Health"
-                />
-              </div>
-              <a
-                href={projects.huige.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                  {projects.huige.name}
-                </h2>
-                <p className="text-white-50 md:text-xl mt-2">
-                  {projects.huige.description}
-                </p>
-              </a>
+              {projects.huige.link ? (
+                <a
+                  href={projects.huige.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col h-full"
+                >
+                  <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
+                    <Image
+                      fill
+                      className="object-contain rounded-xl"
+                      src={projects.huige.image}
+                      alt="Huige Health"
+                    />
+                  </div>
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
+                    {projects.huige.name}
+                  </h2>
+                  <p className="text-white-50 md:text-xl mt-2">
+                    {projects.huige.description}
+                  </p>
+                </a>
+              ) : (
+                <div className="flex flex-col h-full">
+                  <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
+                    <Image
+                      fill
+                      className="object-contain rounded-xl"
+                      src={projects.huige.image}
+                      alt="Huige Health"
+                    />
+                  </div>
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
+                    {projects.huige.name}
+                  </h2>
+                  <p className="text-white-50 md:text-xl mt-2">
+                    {projects.huige.description}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -210,19 +232,20 @@ const ShowcaseSection = () => {
         <div className="flex xl:flex-row flex-col gap-10 justify-between mt-10">
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={tubeLearningRef}>
-              <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl py-0 bg-[#E9C55D]">
-                <Image
-                  fill
-                  className="object-contain rounded-xl"
-                  src={projects.tubeLearning.image}
-                  alt="Tube Learning"
-                />
-              </div>
               <a
                 href={projects.tubeLearning.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex flex-col h-full"
               >
+                <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl py-0 bg-[#E9C55D]">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl"
+                    src={projects.tubeLearning.image}
+                    alt="Tube Learning"
+                  />
+                </div>
                 <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
                   {projects.tubeLearning.name}
                 </h2>
@@ -233,19 +256,20 @@ const ShowcaseSection = () => {
             </div>
 
             <div className="project" ref={lifeExpenseRef}>
-              <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-4 2xl:px-8 py-0 bg-[#212434]">
-                <Image
-                  fill
-                  className="object-contain rounded-xl p-4"
-                  src={projects.lifeExpense.image}
-                  alt="Life Expense"
-                />
-              </div>
               <a
                 href={projects.lifeExpense.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex flex-col h-full"
               >
+                <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-4 2xl:px-8 py-0 bg-[#212434]">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl p-4"
+                    src={projects.lifeExpense.image}
+                    alt="Life Expense"
+                  />
+                </div>
                 <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
                   {projects.lifeExpense.name}
                 </h2>
@@ -260,28 +284,29 @@ const ShowcaseSection = () => {
             ref={atmosphereRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            <div className="xl:h-[70vh] md:h-[50vh] h-96 relative">
-              <Image
-                fill
-                className="object-cover rounded-xl"
-                src={projects.atmosphere.image}
-                alt="Atmosphere"
-              />
-            </div>
-            <div className="space-y-5 mt-5">
-              <a
-                href={projects.atmosphere.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <a
+              href={projects.atmosphere.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col h-full"
+            >
+              <div className="xl:h-[70vh] md:h-[50vh] h-96 relative">
+                <Image
+                  fill
+                  className="object-cover rounded-xl"
+                  src={projects.atmosphere.image}
+                  alt="Atmosphere"
+                />
+              </div>
+              <div className="space-y-5 mt-5">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
                   {projects.atmosphere.name}
                 </h2>
                 <p className="text-white-50 md:text-xl">
                   {projects.atmosphere.description}
                 </p>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -290,45 +315,68 @@ const ShowcaseSection = () => {
             ref={ionMsWebRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
-              <Image
-                fill
-                className="object-contain rounded-xl p-7"
-                src={projects.ionMsWeb.image}
-                alt="ion-ms-web"
-              />
-            </div>
-            <div className="space-y-5 mt-5">
+            {projects.ionMsWeb.link ? (
               <a
                 href={projects.ionMsWeb.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex flex-col h-full"
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
-                  {projects.ionMsWeb.name}
-                </h2>
-                <p className="text-white-50 md:text-xl">
-                  {projects.ionMsWeb.description}
-                </p>
+                <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl p-7"
+                    src={projects.ionMsWeb.image}
+                    alt="ion-ms-web"
+                  />
+                </div>
+                <div className="space-y-5 mt-5">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
+                    {projects.ionMsWeb.name}
+                  </h2>
+                  <p className="text-white-50 md:text-xl">
+                    {projects.ionMsWeb.description}
+                  </p>
+                </div>
               </a>
-            </div>
+            ) : (
+              <div className="flex flex-col h-full">
+                <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl p-7"
+                    src={projects.ionMsWeb.image}
+                    alt="ion-ms-web"
+                  />
+                </div>
+                <div className="space-y-5 mt-5">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
+                    {projects.ionMsWeb.name}
+                  </h2>
+                  <p className="text-white-50 md:text-xl">
+                    {projects.ionMsWeb.description}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={nextStackRef}>
-              <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#E1E4E8]">
-                <Image
-                  fill
-                  className="object-contain rounded-xl p-5"
-                  src={projects.nextStack.image}
-                  alt="next-stack"
-                />
-              </div>
               <a
                 href={projects.nextStack.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex flex-col h-full"
               >
+                <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#E1E4E8]">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl p-5"
+                    src={projects.nextStack.image}
+                    alt="next-stack"
+                  />
+                </div>
                 <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
                   {projects.nextStack.name}
                 </h2>
