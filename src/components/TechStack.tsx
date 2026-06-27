@@ -3,10 +3,18 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
+import { Icon } from "@iconify/react";
 
 import TitleHeader from "../components/TitleHeader";
 
-const techStackImgs = [
+type TechStackItem =
+  | { name: string; imgPath: string }
+  | {
+      name: string;
+      icons: { icon: string; label: string }[];
+    };
+
+const techStackImgs: TechStackItem[] = [
   {
     name: "React Developer",
     imgPath: "/images/logos/react.png",
@@ -42,6 +50,16 @@ const techStackImgs = [
   {
     name: "Project Manager",
     imgPath: "/images/logos/git.png",
+  },
+  {
+    name: "DevOps & Infrastructure",
+    icons: [
+      { icon: "simple-icons:docker", label: "Docker" },
+      { icon: "simple-icons:linux", label: "Linux" },
+      { icon: "simple-icons:redis", label: "Redis" },
+      { icon: "simple-icons:mysql", label: "MySQL" },
+      { icon: "simple-icons:nginx", label: "Nginx" },
+    ],
   },
 ];
 
@@ -87,20 +105,39 @@ const TechStack = () => {
           {techStackImgs.map((techStackIcon, index) => (
             <div
               key={index}
-              className="border border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-[#1e1f21] tech-card overflow-hidden group rounded-lg hover:shadow-lg transition-all duration-300"
+              className="relative border border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-[#1e1f21] tech-card overflow-hidden group rounded-lg hover:shadow-lg transition-all duration-300"
             >
               <div className="absolute left-0 bottom-[-100%] w-full h-full bg-gray-300 dark:bg-gray-900 group-hover:bottom-0 transition-all duration-700" />
               <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 p-6">
-                <div className="flex justify-center items-center w-52 h-60 relative">
-                  <Image 
-                    fill
-                    src={techStackIcon.imgPath} 
-                    alt={techStackIcon.name} 
-                    className="object-contain" 
-                  />
-                </div>
+                {"imgPath" in techStackIcon ? (
+                  <div className="flex justify-center items-center w-52 h-60 relative">
+                    <Image
+                      fill
+                      src={techStackIcon.imgPath}
+                      alt={techStackIcon.name}
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap justify-center items-center gap-5 w-52 h-60 content-center">
+                    {techStackIcon.icons.map((item) => (
+                      <div
+                        key={item.label}
+                        className="flex flex-col items-center gap-2 w-16"
+                        title={item.label}
+                      >
+                        <Icon icon={item.icon} className="w-10 h-10" />
+                        <span className="text-xs text-gray-600 dark:text-gray-400">
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <div className="w-full">
-                  <p className="text-lg 2xl:text-2xl pb-5 xl:pb-0 font-semibold text-gray-900 dark:text-gray-100 text-center">{techStackIcon.name}</p>
+                  <p className="text-lg 2xl:text-2xl pb-5 xl:pb-0 font-semibold text-gray-900 dark:text-gray-100 text-center">
+                    {techStackIcon.name}
+                  </p>
                 </div>
               </div>
             </div>

@@ -6,8 +6,38 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "./TitleHeader";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ProjectLinkButton = ({ link }: { link: string }) => (
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center rounded-full w-8 h-8 md:w-9 md:h-9 bg-gray-200 text-gray-600 dark:bg-[#1e1f21] dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200 shrink-0"
+    aria-label="Visit project"
+  >
+    <ArrowUpRight className="w-4 h-4" />
+  </a>
+);
+
+const ProjectTitleRow = ({
+  name,
+  link,
+  titleClassName,
+  className,
+}: {
+  name: string;
+  link?: string;
+  titleClassName: string;
+  className?: string;
+}) => (
+  <div className={`flex items-center gap-3 ${className ?? ""}`}>
+    <h2 className={titleClassName}>{name}</h2>
+    {link ? <ProjectLinkButton link={link} /> : null}
+  </div>
+);
 
 const ShowcaseSection = () => {
   const sectionRef = useRef(null);
@@ -134,12 +164,7 @@ const ShowcaseSection = () => {
             ref={oceanbaseRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            <a
-              href={projects.oceanbase.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col h-full"
-            >
+            <div className="flex flex-col h-full">
               <div className="xl:h-[70vh] md:h-[50vh] h-96 relative bg-[#2073FF] rounded-xl">
                 <Image
                   fill
@@ -149,24 +174,22 @@ const ShowcaseSection = () => {
                 />
               </div>
               <div className="space-y-5 mt-5">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
-                  {projects.oceanbase.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.oceanbase.name}
+                  link={projects.oceanbase.link}
+                  titleClassName="text-2xl md:text-3xl lg:text-4xl font-bold"
+                  className="py-5"
+                />
                 <p className="text-white-50 md:text-xl">
                   {projects.oceanbase.description}
                 </p>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={unicomRef}>
-              <a
-                href={projects.unicom.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col h-full"
-              >
+              <div className="flex flex-col h-full">
                 <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#FFEFDB]">
                   <Image
                     fill
@@ -175,56 +198,38 @@ const ShowcaseSection = () => {
                     alt="China Unicom App"
                   />
                 </div>
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                  {projects.unicom.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.unicom.name}
+                  link={projects.unicom.link}
+                  titleClassName="text-lg md:text-xl lg:text-2xl font-semibold"
+                  className="mt-5"
+                />
                 <p className="text-white-50 md:text-xl mt-2">
                   {projects.unicom.description}
                 </p>
-              </a>
+              </div>
             </div>
 
             <div className="project" ref={huigeRef}>
-              {projects.huige.link ? (
-                <a
-                  href={projects.huige.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col h-full"
-                >
-                  <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
-                    <Image
-                      fill
-                      className="object-contain rounded-xl"
-                      src={projects.huige.image}
-                      alt="Huige Health"
-                    />
-                  </div>
-                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                    {projects.huige.name}
-                  </h2>
-                  <p className="text-white-50 md:text-xl mt-2">
-                    {projects.huige.description}
-                  </p>
-                </a>
-              ) : (
-                <div className="flex flex-col h-full">
-                  <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
-                    <Image
-                      fill
-                      className="object-contain rounded-xl"
-                      src={projects.huige.image}
-                      alt="Huige Health"
-                    />
-                  </div>
-                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                    {projects.huige.name}
-                  </h2>
-                  <p className="text-white-50 md:text-xl mt-2">
-                    {projects.huige.description}
-                  </p>
+              <div className="flex flex-col h-full">
+                <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl bg-[#008F5D]">
+                  <Image
+                    fill
+                    className="object-contain rounded-xl"
+                    src={projects.huige.image}
+                    alt="Huige Health"
+                  />
                 </div>
-              )}
+                <ProjectTitleRow
+                  name={projects.huige.name}
+                  link={projects.huige.link || undefined}
+                  titleClassName="text-lg md:text-xl lg:text-2xl font-semibold"
+                  className="mt-5"
+                />
+                <p className="text-white-50 md:text-xl mt-2">
+                  {projects.huige.description}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -232,12 +237,7 @@ const ShowcaseSection = () => {
         <div className="flex xl:flex-row flex-col gap-10 justify-between mt-10">
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={tubeLearningRef}>
-              <a
-                href={projects.tubeLearning.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col h-full"
-              >
+              <div className="flex flex-col h-full">
                 <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl py-0 bg-[#E9C55D]">
                   <Image
                     fill
@@ -246,22 +246,20 @@ const ShowcaseSection = () => {
                     alt="Tube Learning"
                   />
                 </div>
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                  {projects.tubeLearning.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.tubeLearning.name}
+                  link={projects.tubeLearning.link}
+                  titleClassName="text-lg md:text-xl lg:text-2xl font-semibold"
+                  className="mt-5"
+                />
                 <p className="text-white-50 md:text-xl mt-2">
                   {projects.tubeLearning.description}
                 </p>
-              </a>
+              </div>
             </div>
 
             <div className="project" ref={lifeExpenseRef}>
-              <a
-                href={projects.lifeExpense.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col h-full"
-              >
+              <div className="flex flex-col h-full">
                 <div className="xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-4 2xl:px-8 py-0 bg-[#212434]">
                   <Image
                     fill
@@ -270,13 +268,16 @@ const ShowcaseSection = () => {
                     alt="Life Expense"
                   />
                 </div>
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                  {projects.lifeExpense.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.lifeExpense.name}
+                  link={projects.lifeExpense.link}
+                  titleClassName="text-lg md:text-xl lg:text-2xl font-semibold"
+                  className="mt-5"
+                />
                 <p className="text-white-50 md:text-xl mt-2">
                   {projects.lifeExpense.description}
                 </p>
-              </a>
+              </div>
             </div>
           </div>
 
@@ -284,12 +285,7 @@ const ShowcaseSection = () => {
             ref={atmosphereRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            <a
-              href={projects.atmosphere.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col h-full"
-            >
+            <div className="flex flex-col h-full">
               <div className="xl:h-[70vh] md:h-[50vh] h-96 relative">
                 <Image
                   fill
@@ -299,14 +295,17 @@ const ShowcaseSection = () => {
                 />
               </div>
               <div className="space-y-5 mt-5">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
-                  {projects.atmosphere.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.atmosphere.name}
+                  link={projects.atmosphere.link}
+                  titleClassName="text-2xl md:text-3xl lg:text-4xl font-bold"
+                  className="py-5"
+                />
                 <p className="text-white-50 md:text-xl">
                   {projects.atmosphere.description}
                 </p>
               </div>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -315,60 +314,32 @@ const ShowcaseSection = () => {
             ref={ionMsWebRef}
             className="h-full flex flex-col justify-between xl:w-[60%]"
           >
-            {projects.ionMsWeb.link ? (
-              <a
-                href={projects.ionMsWeb.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col h-full"
-              >
-                <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
-                  <Image
-                    fill
-                    className="object-contain rounded-xl p-7"
-                    src={projects.ionMsWeb.image}
-                    alt="ion-ms-web"
-                  />
-                </div>
-                <div className="space-y-5 mt-5">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
-                    {projects.ionMsWeb.name}
-                  </h2>
-                  <p className="text-white-50 md:text-xl">
-                    {projects.ionMsWeb.description}
-                  </p>
-                </div>
-              </a>
-            ) : (
-              <div className="flex flex-col h-full">
-                <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
-                  <Image
-                    fill
-                    className="object-contain rounded-xl p-7"
-                    src={projects.ionMsWeb.image}
-                    alt="ion-ms-web"
-                  />
-                </div>
-                <div className="space-y-5 mt-5">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold py-5">
-                    {projects.ionMsWeb.name}
-                  </h2>
-                  <p className="text-white-50 md:text-xl">
-                    {projects.ionMsWeb.description}
-                  </p>
-                </div>
+            <div className="flex flex-col h-full">
+              <div className="xl:h-[70vh] md:h-[50vh] h-96 relative  bg-[#4a65bf] rounded-xl">
+                <Image
+                  fill
+                  className="object-contain rounded-xl p-7"
+                  src={projects.ionMsWeb.image}
+                  alt="ion-ms-web"
+                />
               </div>
-            )}
+              <div className="space-y-5 mt-5">
+                <ProjectTitleRow
+                  name={projects.ionMsWeb.name}
+                  link={projects.ionMsWeb.link || undefined}
+                  titleClassName="text-2xl md:text-3xl lg:text-4xl font-bold"
+                  className="py-5"
+                />
+                <p className="text-white-50 md:text-xl">
+                  {projects.ionMsWeb.description}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%] overflow-hidden">
             <div className="project" ref={nextStackRef}>
-              <a
-                href={projects.nextStack.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col h-full"
-              >
+              <div className="flex flex-col h-full">
                 <div className="xl:h-[35vh] md:h-50 lg:h-68 h-60 relative rounded-xl py-0 bg-[#E1E4E8]">
                   <Image
                     fill
@@ -377,13 +348,16 @@ const ShowcaseSection = () => {
                     alt="next-stack"
                   />
                 </div>
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-5">
-                  {projects.nextStack.name}
-                </h2>
+                <ProjectTitleRow
+                  name={projects.nextStack.name}
+                  link={projects.nextStack.link}
+                  titleClassName="text-lg md:text-xl lg:text-2xl font-semibold"
+                  className="mt-5"
+                />
                 <p className="text-white-50 md:text-xl mt-2">
                   {projects.nextStack.description}
                 </p>
-              </a>
+              </div>
             </div>
           </div>
         </div>

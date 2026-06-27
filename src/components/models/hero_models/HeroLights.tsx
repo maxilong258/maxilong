@@ -8,10 +8,10 @@ const HeroLights = () => {
   const isDark = theme === "dark";
 
   if (isDark) {
-    // 夜间效果 - 保持原有的彩色灯光
+    // 夜间效果 - 星巴克式柔和暖黄氛围，台灯保持不变
     return (
       <>
-        {/* lamp's light */}
+        {/* 台灯 */}
         <spotLight
           position={[2, 5, 6]}
           angle={0.15}
@@ -20,35 +20,37 @@ const HeroLights = () => {
           color="white"
         />
 
-        {/* bluish overhead lamp */}
+        {/* 柔和暖黄顶光 */}
         <spotLight
           position={[4, 5, 4]}
           angle={0.3}
-          penumbra={0.5}
-          intensity={40}
-          color="#4cc9f0"
+          penumbra={0.6}
+          intensity={8}
+          color="#f5deb3"
         />
 
-        {/* purplish side fill */}
+        {/* 侧面暖黄填充 */}
         <spotLight
           position={[-3, 5, 5]}
           angle={0.4}
           penumbra={1}
-          intensity={60}
-          color="#9d4edd"
+          intensity={22}
+          color="#e8c89a"
         />
 
-        {/* area light for soft moody fill */}
+        {/* 柔和区域光 */}
         <primitive
-          object={new THREE.RectAreaLight("#a259ff", 8, 3, 2)}
+          object={new THREE.RectAreaLight("#f0d5a8", 8, 3, 2)}
           position={[1, 3, 4]}
           rotation={[-Math.PI / 4, Math.PI / 4, 0]}
-          intensity={15}
+          intensity={6}
         />
 
-        {/* subtle point light for atmospheric tone */}
-        <pointLight position={[0, 1, 0]} intensity={10} color="#7209b7" />
-        <pointLight position={[1, 2, -2]} intensity={10} color="#0d00a4" />
+        <ambientLight intensity={0.06} color="#fff0d4" />
+
+        {/* 氛围补光 */}
+        <pointLight position={[0, 1, 0]} intensity={4} color="#d4a574" />
+        <pointLight position={[1, 2, -2]} intensity={3} color="#c9956c" />
       </>
     );
   }
@@ -56,11 +58,11 @@ const HeroLights = () => {
   // 白天效果 - 自然光照
   return (
     <>
-      {/* 主要太阳光 - 从窗户方向照射 */}
+      {/* 主要日光 - 从窗户侧（负 X）射入 */}
       <directionalLight
-        position={[5, 8, 5]}
-        intensity={7.5}
-        color="#ffd700"
+        position={[1, 7, 3]}
+        intensity={4.5}
+        color="#f5f8ff"
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
@@ -71,36 +73,26 @@ const HeroLights = () => {
         shadow-camera-bottom={-10}
       />
 
-      {/* 环境光 - 模拟天空光 */}
-      <ambientLight intensity={0.3} color="#87ceeb" />
+      {/* 环境光 - 模拟天空散射 */}
+      <ambientLight intensity={0.35} color="#c5dff0" />
 
-      {/* 窗户区域的补光 */}
+      {/* 窗户区域漫射补光 */}
       <spotLight
-        position={[3, 4, 6]}
-        angle={0.6}
-        penumbra={0.8}
-        intensity={0.8}
-        color="#ffffff"
+        position={[-4, 3.5, 2]}
+        angle={0.7}
+        penumbra={1}
+        intensity={1.5}
+        color="#eef6ff"
       />
 
-      {/* 房间内部的柔和补光 */}
-      <pointLight position={[0, 3, 0]} intensity={5} color="#ffffff" />
-      
-      {/* 桌面工作区域的重点照明 */}
-      <spotLight
-        position={[0, 4, 2]}
-        angle={0.3}
-        penumbra={0.5}
-        intensity={0.6}
-        color="#ffffff"
-        target-position={[0, 0, 0]}
-      />
+      {/* 房间内部柔和填充，避免压过主光阴影 */}
+      <pointLight position={[1, 3, 1]} intensity={1.2} color="#fafafa" />
 
-      {/* 天花板反射光 */}
+      {/* 天花板与地板反射 */}
       <hemisphereLight
-        intensity={0.1}
-        color="#ffffff"
-        groundColor="#f0f0f0"
+        intensity={0.25}
+        color="#e8f2ff"
+        groundColor="#e8e4dc"
       />
     </>
   );

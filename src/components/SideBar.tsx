@@ -19,7 +19,7 @@ const navLinks = [
 const SideBar = () => {
   return (
     <div className="hidden md:block">
-      <aside className="fixed left-0 top-0 h-full w-20 xl:w-40 flex flex-col items-center justify-center space-y-6 z-10">
+      <aside className="fixed left-0 top-0 h-full w-20 xl:w-40 flex flex-col items-start pl-4 xl:pl-8 justify-center space-y-6 z-10">
         {navLinks.map((link, index) => (
           <Tooltip key={index}>
             <TooltipTrigger asChild>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { EffectComposer, SelectiveBloom } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
@@ -10,7 +10,6 @@ import { useTheme } from "next-themes";
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/optimized-room.glb");
   const screensRef = useRef();
-  const matcapTexture = useTexture("/images/textures/mat1.png");
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -22,7 +21,8 @@ export function Room(props) {
   });
 
   const bodyMaterial = new THREE.MeshPhongMaterial({
-    map: matcapTexture,
+    color: "#eeeeee",
+    shininess: isDark ? 10 : 15,
   });
 
   const tableMaterial = new THREE.MeshPhongMaterial({
