@@ -45,6 +45,15 @@
 
 :root {
   --radius: 0.625rem;
+  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+  --exp-glow-gradient: radial-gradient(
+    circle,
+    #fb923c 0%,
+    #fbbf24 35%,
+    #fff7ed 65%,
+    #ffffff 100%
+  );
+  --exp-glow-highlight: #f97316;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -80,6 +89,9 @@
 
 .dark {
   --background: oklch(0.145 0 0);
+  --gradient: radial-gradient(circle, #3a3a3a 0%, #1e1f21 100%);
+  --exp-glow-gradient: radial-gradient(circle, #e5e5e5 0%, #ffffff 100%);
+  --exp-glow-highlight: #ffffff;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -130,6 +142,138 @@ body {
   /* &::-webkit-scrollbar {
     display: none;
   } */
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-5 md:px-10 md:mt-40 mt-20;
+  }
+
+  .exp-card-wrapper {
+    @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
+  }
+}
+
+#experience .exp-list {
+  position: relative;
+}
+
+#experience .exp-timeline-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3.5rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  #experience .exp-timeline-rail {
+    width: 7rem;
+  }
+}
+
+#experience .exp-timeline-mask {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 3.5rem;
+  transform: translateX(-50%);
+  z-index: 0;
+  @apply bg-background;
+}
+
+@media (min-width: 768px) {
+  #experience .exp-timeline-mask {
+    width: 7rem;
+  }
+}
+
+#experience .exp-timeline-line {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 2px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(69, 222, 196, 0) 0%,
+    #62e0ff 25%,
+    #52aeff 37.51%,
+    #fd5c79 62.83%,
+    #6d45ce 92.91%
+  );
+}
+
+/* Experience section — scoped to #experience only */
+#experience .exp-glow-card {
+  --start: 0;
+  position: relative;
+  z-index: 40;
+  overflow: hidden;
+  transition: border-color 1s ease-in-out;
+  @apply border border-gray-200 bg-gray-200 dark:border-gray-700 dark:bg-[#1e1f21];
+}
+
+#experience .exp-glow-card::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--exp-glow-gradient);
+  background-attachment: fixed;
+  -webkit-mask:
+    linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--start) - 15) * 1deg),
+      #ffffff1f 0deg,
+      var(--exp-glow-highlight),
+      #ffffff00 100deg
+    );
+  -webkit-mask-composite: source-in;
+  mask:
+    linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--start) - 15) * 1deg),
+      #ffffff1f 0deg,
+      var(--exp-glow-highlight),
+      #ffffff00 100deg
+    );
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+#experience .exp-glow-card .glow {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(10px) saturate(200%);
+}
+
+#experience .exp-glow-card:hover::before {
+  opacity: 1;
 }
 
 /* Sonner Toast 自定义样式 */
