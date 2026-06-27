@@ -88,14 +88,14 @@ const ShowcaseSection = () => {
     atmosphere: {
       name: "My Ambience",
       description: "一个基于Next.js的音乐氛围创建网站。",
-      image: "/images/atmosphere.png",
+      image: "/images/atmosphere.webp",
       link: "https://myambience.vercel.app/",
     },
     ionMsWeb: {
       name: "阿姆河东部气田智能运维主站",
       description:
         "阿姆河东部气田智能运维主站工程，基于Vue3。(内部项目，暂无链接)",
-      image: "/images/ion-ms-web.png",
+      image: "/images/ion-ms-web.webp",
       link: "",
     },
     nextStack: {

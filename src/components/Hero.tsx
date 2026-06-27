@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Button } from "./ui/button";
-import HeroExperience from "./models/hero_models/HeroExperience";
+import HeroCanvas from "./HeroCanvas";
 import { ArrowDown } from "lucide-react";
 
 export default async function Hero() {
@@ -31,7 +31,7 @@ export default async function Hero() {
 
         <figure>
           <div className="xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-10 top-24 xl:-right-20 right-0 hover:cursor-grab" style={{zIndex: -1}}>
-            <HeroExperience />
+            <HeroCanvas />
           </div>
         </figure>
       </div>

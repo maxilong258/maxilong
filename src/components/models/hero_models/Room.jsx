@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { EffectComposer, SelectiveBloom } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
@@ -13,43 +13,56 @@ export function Room(props) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  // 根据主题调整材质
-  const curtainMaterial = new THREE.MeshPhongMaterial({
-    color: isDark ? "#d90429" : "#ff6b6b",
-    transparent: true,
-    opacity: isDark ? 1 : 0.9,
-  });
+  const roomMaterials = useMemo(() => {
+    return {
+      curtain: new THREE.MeshPhongMaterial({
+        color: isDark ? "#d90429" : "#ff6b6b",
+        transparent: true,
+        opacity: isDark ? 1 : 0.9,
+      }),
+      body: new THREE.MeshPhongMaterial({
+        color: "#eeeeee",
+        shininess: isDark ? 10 : 15,
+      }),
+      table: new THREE.MeshPhongMaterial({
+        color: isDark ? "#582f0e" : "#8b4513",
+        shininess: isDark ? 30 : 50,
+      }),
+      radiator: new THREE.MeshPhongMaterial({
+        color: isDark ? "#fff" : "#f8f9fa",
+        shininess: isDark ? 50 : 80,
+      }),
+      comp: new THREE.MeshStandardMaterial({
+        color: isDark ? "#fff" : "#ffffff",
+        metalness: isDark ? 0.1 : 0.2,
+        roughness: isDark ? 0.8 : 0.6,
+      }),
+      pillow: new THREE.MeshPhongMaterial({
+        color: isDark ? "#8338ec" : "#4a90e2",
+        shininess: isDark ? 20 : 30,
+      }),
+      chair: new THREE.MeshPhongMaterial({
+        color: isDark ? "#000" : "#2c3e50",
+        shininess: isDark ? 10 : 40,
+      }),
+    };
+  }, [isDark]);
 
-  const bodyMaterial = new THREE.MeshPhongMaterial({
-    color: "#eeeeee",
-    shininess: isDark ? 10 : 15,
-  });
+  useEffect(() => {
+    return () => {
+      Object.values(roomMaterials).forEach((material) => material.dispose());
+    };
+  }, [roomMaterials]);
 
-  const tableMaterial = new THREE.MeshPhongMaterial({
-    color: isDark ? "#582f0e" : "#8b4513",
-    shininess: isDark ? 30 : 50,
-  });
-
-  const radiatorMaterial = new THREE.MeshPhongMaterial({
-    color: isDark ? "#fff" : "#f8f9fa",
-    shininess: isDark ? 50 : 80,
-  });
-
-  const compMaterial = new THREE.MeshStandardMaterial({
-    color: isDark ? "#fff" : "#ffffff",
-    metalness: isDark ? 0.1 : 0.2,
-    roughness: isDark ? 0.8 : 0.6,
-  });
-
-  const pillowMaterial = new THREE.MeshPhongMaterial({
-    color: isDark ? "#8338ec" : "#4a90e2",
-    shininess: isDark ? 20 : 30,
-  });
-
-  const chairMaterial = new THREE.MeshPhongMaterial({
-    color: isDark ? "#000" : "#2c3e50",
-    shininess: isDark ? 10 : 40,
-  });
+  const {
+    curtain: curtainMaterial,
+    body: bodyMaterial,
+    table: tableMaterial,
+    radiator: radiatorMaterial,
+    comp: compMaterial,
+    pillow: pillowMaterial,
+    chair: chairMaterial,
+  } = roomMaterials;
 
   return (
     <group {...props} dispose={null}>
