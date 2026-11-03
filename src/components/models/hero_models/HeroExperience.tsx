@@ -1,6 +1,6 @@
 "use client";
 
-import { OrbitControls } from '@react-three/drei'
+import { Bounds, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useMediaQuery } from "react-responsive";
 import { Room } from "./Room";
@@ -22,6 +22,7 @@ const HeroExperience = () => {
       <HeroLights />
 
       <OrbitControls
+        makeDefault
         enablePan={false} // Prevents panning of the scene
         enableZoom={!isTablet} // Disables zoom on tablets
         maxDistance={20} // Maximum distance for zooming out
@@ -30,13 +31,15 @@ const HeroExperience = () => {
         maxPolarAngle={Math.PI / 2} // Maximum angle for vertical rotation
       />
 
-      <group
-        scale={isMobile ? 0.7 : 1}
-        position={[0, -3.5, 0]}
-        rotation={[0, -Math.PI / 4, 0]}
-      >
-        <Room />
-      </group>
+      <Bounds fit clip observe margin={1.05}>
+        <group
+          scale={isMobile ? 0.7 : 1}
+          position={[0, -3.5, 0]}
+          rotation={[0, -Math.PI / 4, 0]}
+        >
+          <Room />
+        </group>
+      </Bounds>
     </Canvas>
   )
 }
